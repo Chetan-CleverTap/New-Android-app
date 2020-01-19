@@ -15,6 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".nd_ott.StoryViewActivity"></activity>
+        <activity android:name=".nd_ott.OTTHomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".DeepLinkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -22,38 +30,45 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <!--
+                    <data
+                    android:host="clevertap"
+                    android:path="/"
+                    android:scheme="abcd" />
+                -->
+
                 <data
                     android:host="www.google.com"
                     android:pathPrefix="/CleverTap"
                     android:scheme="https" />
-
             </intent-filter>
         </activity>
-
         <activity android:name=".AppInboxActivity" />
-        <activity android:name=".InAppActivity" />
-
-        <meta-data
+        <activity android:name=".InAppActivity" /> <!-- CS Support -->
+        <!--
+<meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
             android:value="W67-774-7Z5Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
             android:value="4aa-a60" />
-
-        <!--<meta-data
+        -->
+        <!-- TEST-Chetan's Demo App -->
+        <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
             android:value="TEST-549-W7Z-775Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-1a0-c45" />-->
+            android:value="TEST-1a0-c45" /> <!-- Chetan's Demo App -->
+        <!--
+<meta-data
+            android:name="CLEVERTAP_ACCOUNT_ID"
+            android:value="449-W7Z-775Z" />
 
-        <!--       <meta-data
-                       android:name="CLEVERTAP_ACCOUNT_ID"
-                       android:value="449-W7Z-775Z" />
-
-                   <meta-data
-                       android:name="CLEVERTAP_TOKEN"
-                       android:value="1a0-c44" />-->
+        <meta-data
+            android:name="CLEVERTAP_TOKEN"
+            android:value="1a0-c44" />
+        -->
         <meta-data
             android:name="CLEVERTAP_USE_GOOGLE_AD_ID"
             android:value="1" />
@@ -95,31 +110,37 @@
         <meta-data
             android:name="CLEVERTAP_NOTIFICATION_ICON"
             android:value="ic_announcement_black_24dp" />
-
         <meta-data
             android:name="CLEVERTAP_APP_PACKAGE"
             android:value="com.example.ctdemo" />
-        <!--<activity
+        <!--
+<activity
                     android:name="com.clevertap.android.sdk.InAppNotificationActivity"
-                    android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+                    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        -->
         <meta-data
             android:name="CLEVERTAP_INAPP_EXCLUDE"
             android:value="LoginActivity, UserRegisterActivity" />
 
         <activity android:name=".MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".UserRegisterActivity">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".UserRegisterActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            -->
         </activity>
     </application>
 

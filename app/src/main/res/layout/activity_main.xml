@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:auto_slide_time="3"
+                app:auto_slide_time="1"
                 app:cardSlider_cardCornerRadius="5dp"
                 app:cardSlider_otherPagesWidth="24dp"
                 app:cardSlider_pageMargin="12dp"

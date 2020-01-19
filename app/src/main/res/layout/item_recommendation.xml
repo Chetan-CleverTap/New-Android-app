@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/card_bg"
+            android:layout_width="250dp"
+            android:layout_height="170dp"
+            android:background="@drawable/card_bg"
+            android:elevation="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_rec"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/card_bg"
+            app:layout_constraintEnd_toEndOf="@id/card_bg"
+            app:layout_constraintStart_toStartOf="@+id/card_bg"
+            app:layout_constraintTop_toTopOf="@id/card_bg" />
+
+        <TextView
+            android:id="@+id/text_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:elevation="2dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/image_rec"
+            app:layout_constraintStart_toStartOf="@+id/image_rec" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

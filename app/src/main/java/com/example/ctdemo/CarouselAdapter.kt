@@ -17,7 +17,7 @@ class CarouselAdapter(displayUnits: ArrayList<CleverTapDisplayUnitContent>, var 
     ) {
         Glide.with(context)
             .load(item?.media)
-            .fitCenter()
+            .centerCrop()
             .into(itemContentView.findViewById(R.id.image))
 
         itemContentView.findViewById<TextView>(R.id.text_image).text = item?.message
