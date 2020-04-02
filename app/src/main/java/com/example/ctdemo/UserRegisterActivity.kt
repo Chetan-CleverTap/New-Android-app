@@ -39,9 +39,9 @@ class UserRegisterActivity : AppCompatActivity() {
                     profileUpdate["Identity"] = user.userName!!
                     profileUpdate["Email"] = user.email!!
                     profileUpdate["UserName"] = user.userName!!
-                    profileUpdate["UserName"] = user.userName!!
+//                    profileUpdate["UserName"] = user.userName!!
 
-                    MyApplication.getCleverTapDefaultInstance().onUserLogin(profileUpdate)
+//                    MyApplication.getCleverTapDefaultInstance().onUserLogin(profileUpdate)
                     goToLogin()
                 }
             }

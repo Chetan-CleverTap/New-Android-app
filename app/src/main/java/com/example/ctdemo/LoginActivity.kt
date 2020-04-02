@@ -45,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
                 editor.putBoolean("login", true)
                 editor.apply()
 
-                MyApplication.getCleverTapDefaultInstance()
-                    .pushEvent("Login", loginActionProperties)
+//                MyApplication.getCleverTapDefaultInstance()
+//                    .pushEvent("Login", loginActionProperties)
 
                 goToMain()
             }

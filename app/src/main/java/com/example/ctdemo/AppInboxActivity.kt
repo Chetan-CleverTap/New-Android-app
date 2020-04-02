@@ -12,9 +12,9 @@ class AppInboxActivity : AppCompatActivity(), CTInboxListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app_inbox)
 
-        MyApplication.getCleverTapDefaultInstance().ctNotificationInboxListener = this
+//        MyApplication.getCleverTapDefaultInstance().ctNotificationInboxListener = this
         //Initialize the inbox and wait for callbacks on overridden methods
-        MyApplication.getCleverTapDefaultInstance().initializeInbox()
+//        MyApplication.getCleverTapDefaultInstance().initializeInbox()
     }
 
     override fun inboxDidInitialize() {
@@ -38,13 +38,13 @@ class AppInboxActivity : AppCompatActivity(), CTInboxListener {
         styleConfig.navBarColor = "#FFFFFF"
         styleConfig.inboxBackgroundColor = "#00FF00"
 
-        MyApplication.getCleverTapDefaultInstance()
-            .showAppInbox(styleConfig) //Opens activity tith Tabs
-
-        //OR
-        //OR
-        MyApplication.getCleverTapDefaultInstance()
-            .showAppInbox() //Opens Activity with default style config
+//        MyApplication.getCleverTapDefaultInstance()
+//            .showAppInbox(styleConfig) //Opens activity tith Tabs
+//
+//        //OR
+//        //OR
+//        MyApplication.getCleverTapDefaultInstance()
+//            .showAppInbox() //Opens Activity with default style config
 
     }
 

@@ -58,32 +58,33 @@ class StoryViewActivity : AppCompatActivity(), MomentzCallback {
     override fun onNextCalled(view: View, momentz: Momentz, index: Int) {
 
         momentz.pause(true)
-        Glide.with(this)
-            .load(images[index].media)
-            .fitCenter()
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
+        if (!isDestroyed)
+            Glide.with(this)
+                .load(images[index].media)
+                .fitCenter()
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
 
-                    return false
-                }
+                        return false
+                    }
 
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
 
-                    momentz.resume()
-                    return false
-                }
-            })
-            .into(view as ImageView)
+                        momentz.resume()
+                        return false
+                    }
+                })
+                .into(view as ImageView)
     }
 }

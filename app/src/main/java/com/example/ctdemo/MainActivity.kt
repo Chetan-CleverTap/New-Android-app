@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.clevertap.android.sdk.CTExperimentsListener
 import com.clevertap.android.sdk.CTInboxListener
 import com.clevertap.android.sdk.CTInboxStyleConfig
+import com.clevertap.android.sdk.CleverTapAPI
 import com.clevertap.android.sdk.displayunits.DisplayUnitListener
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnit
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnitContent
@@ -25,41 +26,49 @@ class MainActivity : AppCompatActivity(), CTInboxListener, DisplayUnitListener,
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.buttonInApp.setOnClickListener {
+            //            MyApplication.getCleverTapDefaultInstance().removeValueForKey("is_test")
+
+
             val intent = Intent(this, InAppActivity::class.java)
             startActivity(intent)
 
+
+//            pushCreateProfileClevertap();
         }
 
-        binding.buttonNativeDisplay.setOnClickListener {
-            MyApplication.getCleverTapDefaultInstance().pushEvent("Native Display")
-//            MyApplication.getCleverTapDefaultInstance().pushEvent("ViewedCarouselProducts")
-        }
-
-        MyApplication.getCleverTapDefaultInstance().ctNotificationInboxListener = this
-        //Initialize the inbox and wait for callbacks on overridden methods
-        MyApplication.getCleverTapDefaultInstance().initializeInbox()
-
-        MyApplication.getCleverTapDefaultInstance().setDisplayUnitListener(this)
-
-        MyApplication.getCleverTapDefaultInstance().ctExperimentsListener = this
-//
-//        MyApplication.getCleverTapDefaultInstance().setCTExperimentsListener(this);
-
-
-//        MyApplication.getCleverTapDefaultInstance().registerIntegerVariable("testVariable1")
-//        MyApplication.getCleverTapDefaultInstance().registerBooleanVariable("testVariable2")
-
-        MyApplication.getCleverTapDefaultInstance().registerIntegerVariable("CTA")
-        MyApplication.getCleverTapDefaultInstance().registerBooleanVariable("imgUrl")
-
-//        for (i in 0..100) {
-//            val properties = HashMap<String, Any>()
-//            properties["Property_1"] = i + 123
-//
-//            MyApplication.getCleverTapDefaultInstance().pushEvent("New Event", properties)
+//        binding.buttonNativeDisplay.setOnClickListener {
+//            MyApplication.getCleverTapDefaultInstance().pushEvent("Native Display")
 //        }
+//
+//        MyApplication.getCleverTapDefaultInstance().ctNotificationInboxListener = this
+//
+//        MyApplication.getCleverTapDefaultInstance().initializeInbox()
+//
+//        MyApplication.getCleverTapDefaultInstance().setDisplayUnitListener(this)
+//
+//        MyApplication.getCleverTapDefaultInstance().ctExperimentsListener = this
+//
+//        MyApplication.getCleverTapDefaultInstance().registerIntegerVariable("CTA")
+//        MyApplication.getCleverTapDefaultInstance().registerBooleanVariable("imgUrl")
+
     }
 
+//    val cleverTapAPI: CleverTapAPI? = CleverTapAPI.getDefaultInstance(this)
+
+//    fun pushCreateProfileClevertap() {
+//        val profileUpdate = HashMap<String, Any>()
+//        profileUpdate.put("Name", "Rachel ")
+//        profileUpdate.put("fullname", "Rachel ")
+//        profileUpdate.put("Identity", 56670)
+//        profileUpdate.put("Email", "rachelsugehaa@mail.com")
+//        profileUpdate.put("Phone", "+6281319328629")
+//        profileUpdate.put("Gender", "F")
+//        profileUpdate.put("Available Cash", 675440.41)
+//        profileUpdate.put("Available Koin", 0)
+//        profileUpdate.put("Preference AP KOINP2P", 0)
+//        profileUpdate.put("Auto Purchase KOINP2P", "")
+//        cleverTapAPI?.onUserLogin(profileUpdate)
+//    }
 
     override fun inboxDidInitialize() {
         binding.buttonAppInbox.setOnClickListener {
@@ -83,8 +92,8 @@ class MainActivity : AppCompatActivity(), CTInboxListener, DisplayUnitListener,
             styleConfig.navBarColor = "#FFFFFF"
             styleConfig.inboxBackgroundColor = "#00FF00"
 
-            MyApplication.getCleverTapDefaultInstance()
-                .showAppInbox(styleConfig) //Opens activity with Tabs
+//            MyApplication.getCleverTapDefaultInstance()
+//                .showAppInbox(styleConfig) //Opens activity with Tabs
 
         }
     }
@@ -119,14 +128,14 @@ class MainActivity : AppCompatActivity(), CTInboxListener, DisplayUnitListener,
 //        val intVar =
 //            MyApplication.getCleverTapDefaultInstance().getIntegerVariable("testVariable1", -1)
 //
-        val cta =
-            MyApplication.getCleverTapDefaultInstance().getStringVariable("CTA", null)
-
-        val url =
-            MyApplication.getCleverTapDefaultInstance().getStringVariable("imgUrl", null)
-
-        Log.d("CTA Variable", "Value : $cta")
-        Log.d("ImgUrl Variable", "Value : $url")
+//        val cta =
+//            MyApplication.getCleverTapDefaultInstance().getStringVariable("CTA", null)
+//
+//        val url =
+//            MyApplication.getCleverTapDefaultInstance().getStringVariable("imgUrl", null)
+//
+//        Log.d("CTA Variable", "Value : $cta")
+//        Log.d("ImgUrl Variable", "Value : $url")
 
     }
 }
