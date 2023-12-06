@@ -58,7 +58,7 @@ dependencies {
     implementation 'com.github.IslamKhSh:CardSlider:0.4'
 
     implementation 'de.hdodenhof:circleimageview:3.0.1'
-    implementation 'com.github.bolaware:momentz:v1.0'
+    implementation 'com.github.bolaware:momentz:v2.0'
 
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

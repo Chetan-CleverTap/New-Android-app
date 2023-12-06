@@ -45,7 +45,7 @@ class StoryAdapter(
                 .fitCenter()
                 .into(binding.imageStory)
 
-            binding.tvName.text = unit.title
+//            binding.tvName.text = unit.title
 
             itemView.setOnClickListener {
                 onItemClick?.invoke(unit)

@@ -21,11 +21,11 @@
         <activity
             android:name=".pe_et.EdTechListActivity"
             android:label="A_CT_EdTech">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity> <!-- <receiver android:name=".UninstallIntentReceiver"> -->
         <!-- <intent-filter android:priority="0"> -->
         <!-- <action android:name="android.intent.action.QUERY_PACKAGE_RESTART" /> -->
@@ -37,13 +37,11 @@
             android:name=".nd_ott.OTTHomeActivity"
             android:label="A_CT_OTT">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity android:name=".DeepLinkActivity">
             <intent-filter android:autoVerify="true">
@@ -136,14 +134,12 @@
             android:name=".MainActivity"
             android:label="A_CT_Main">
 
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserRegisterActivity"></activity>

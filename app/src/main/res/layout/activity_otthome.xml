@@ -86,7 +86,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_divider" />
 
-            <androidx.recyclerview.widget.RecyclerView
+           <!-- <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_recommendation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,21 +94,28 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/header_recommendation"
                 tools:itemCount="5"
-                tools:listitem="@layout/item_story" />
+                tools:listitem="@layout/item_story" />-->
+
+            <ImageView
+                android:id="@+id/image_banner"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/header_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/group_rec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:constraint_referenced_ids="view_divider,header_recommendation,recycler_view_recommendation" />
+                app:constraint_referenced_ids="view_divider,header_recommendation,image_banner" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier_rec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="view_divider,header_recommendation,recycler_view_recommendation" />
+                app:constraint_referenced_ids="view_divider,header_recommendation,image_banner" />
 
             <TextView
                 android:id="@+id/header_movies"

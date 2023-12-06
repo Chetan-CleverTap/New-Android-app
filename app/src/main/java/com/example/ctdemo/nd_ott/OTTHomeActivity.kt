@@ -1,12 +1,16 @@
 package com.example.ctdemo.nd_ott
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.clevertap.android.sdk.displayunits.DisplayUnitListener
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnit
+import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnitContent
 import com.example.ctdemo.MyApplication
 import com.example.ctdemo.R
 import com.example.ctdemo.databinding.ActivityOtthomeBinding
@@ -15,23 +19,23 @@ class OTTHomeActivity : AppCompatActivity(), DisplayUnitListener {
 
     private lateinit var binding: ActivityOtthomeBinding
 
-//    private val imagesComedy: ArrayList<CleverTapDisplayUnitContent> = ArrayList()
+    private val imagesComedy: ArrayList<CleverTapDisplayUnitContent> = ArrayList()
 //
-//    private val imagesHorror: ArrayList<CleverTapDisplayUnitContent> = ArrayList()
+    private val imagesHorror: ArrayList<CleverTapDisplayUnitContent> = ArrayList()
 //
-//    private lateinit var adapterStory: StoryAdapter
+    private lateinit var adapterStory: StoryAdapter
 
     private var images: ArrayList<String> = ArrayList()
 
     private lateinit var moviesAdapter: MoviesAdapter
 
-    private lateinit var adapterRecommendation: RecommendationAdapter
+//    private lateinit var adapterRecommendation: RecommendationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_otthome)
 
-//        adapterStory = StoryAdapter(context = this, units = imagesComedy)
+        adapterStory = StoryAdapter(context = this, units = imagesComedy)
 
         val movies = listOf(
             "https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTgwMTAzNTAzNzE@._V1_.jpg",
@@ -48,55 +52,56 @@ class OTTHomeActivity : AppCompatActivity(), DisplayUnitListener {
 
         moviesAdapter = MoviesAdapter(this, movies)
 
-//        binding.recyclerViewStory.adapter = adapterStory
+        binding.recyclerViewStory.adapter = adapterStory
 
 
-        adapterRecommendation =
-            RecommendationAdapter(context = this, units = images)
+//        adapterRecommendation =
+//            RecommendationAdapter(context = this, units = images)
 
-        binding.recyclerViewRecommendation.adapter = adapterRecommendation
+//        binding.recyclerViewRecommendation.adapter = adapterRecommendation
 
-
-//
-//        adapterStory.onItemClick = { _ ->
-//            //            MyApplication.getCleverTapDefaultInstance().pushDisplayUnitClickedEventForID(adUnit.getUnitID())
-//
-//            val intent = Intent(this, StoryViewActivity::class.java)
-//            intent.putExtra("IMAGES", imagesComedy)
-//            startActivity(intent)
-//        }
-
-
+        adapterStory.onItemClick = { _ ->
+            //            MyApplication.getCleverTapDefaultInstance().pushDisplayUnitClickedEventForID(adUnit.getUnitID())
+            val intent = Intent(this, StoryViewActivity::class.java)
+            intent.putExtra("IMAGES", imagesComedy)
+            startActivity(intent)
+        }
         binding.recyclerViewMovies.adapter = moviesAdapter
+        MyApplication.getCleverTapDefaultInstance().setDisplayUnitListener(this)
+        MyApplication.getCleverTapDefaultInstance().pushEvent("OTT Native Display-Comedy")
+        MyApplication.getCleverTapDefaultInstance().pushEvent("OTT Native Display-Horror")
+//        loadRec()
 
-//        MyApplication.getCleverTapDefaultInstance().setDisplayUnitListener(this)
-
-//        MyApplication.getCleverTapDefaultInstance().pushEvent("OTT Native Display-Comedy")
-//        MyApplication.getCleverTapDefaultInstance().pushEvent("OTT Native Display-Horror")
-
-        loadRec()
-
+        binding.imageBanner.setOnClickListener(View.OnClickListener {    val intent = Intent(this, StoryViewActivity::class.java)
+            intent.putExtra("IMAGES", imagesComedy)
+            startActivity(intent) })
     }
 
     override fun onDisplayUnitsLoaded(units: ArrayList<CleverTapDisplayUnit>?) {
-//        for (i in 0 until units!!.size) {
-//            val unit = units[i]
-//            Log.d("Unit ID", unit.unitID)
-//            if (unit.unitID.contains("1579678631")) {
-//                loadStory(unit)
-//            } else if (unit.unitID.contains("1579678855")) {
-//                loadRecommendation(unit)
-//            }
-//        }
+        for (i in 0 until units!!.size) {
+            val unit = units[i]
+            Log.d("Unit ID", unit.unitID)
+            if (unit.unitID.contains("1701761050")) {
+                loadStory(unit)
+            } else if (unit.unitID.contains("1701760965")) {
+                loadRecommendation(unit)
+            }
+        }
     }
 
-//    private fun loadStory(unit: CleverTapDisplayUnit) {
-//        binding.groupStories.visibility = View.VISIBLE
-//        imagesComedy.clear()
-//        imagesComedy.addAll(unit.contents)
-//        adapterStory.notifyDataSetChanged()
-//        MyApplication.getCleverTapDefaultInstance().pushDisplayUnitViewedEventForID(unit.unitID)
-//    }
+    private fun loadStory(unit: CleverTapDisplayUnit) {
+
+        Glide.with(this)
+            .load(unit.contents[0].media)
+            .centerInside()
+            .into(binding.imageBanner)
+
+        binding.groupStories.visibility = View.VISIBLE
+        imagesComedy.clear()
+        imagesComedy.addAll(unit.contents)
+        adapterStory.notifyDataSetChanged()
+        MyApplication.getCleverTapDefaultInstance().pushDisplayUnitViewedEventForID(unit.unitID)
+    }
 
     fun loadRec() {
 
@@ -110,7 +115,7 @@ class OTTHomeActivity : AppCompatActivity(), DisplayUnitListener {
 
                 binding.groupRec.visibility = View.VISIBLE
 
-                adapterRecommendation.notifyDataSetChanged()
+//                adapterRecommendation.notifyDataSetChanged()
 
             }
         }
@@ -119,11 +124,11 @@ class OTTHomeActivity : AppCompatActivity(), DisplayUnitListener {
 //        MyApplication.getCleverTapDefaultInstance().pushDisplayUnitViewedEventForID(unit.unitID)
     }
 
-//    private fun loadRecommendation(unit: CleverTapDisplayUnit) {
-//        binding.groupRec.visibility = View.VISIBLE
-//        imagesHorror.clear()
-//        imagesHorror.addAll(unit.contents)
-//        adapterRecommendation.notifyDataSetChanged()
-//        MyApplication.getCleverTapDefaultInstance().pushDisplayUnitViewedEventForID(unit.unitID)
-//    }
+    private fun loadRecommendation(unit: CleverTapDisplayUnit) {
+        binding.groupRec.visibility = View.VISIBLE
+        imagesHorror.clear()
+        imagesHorror.addAll(unit.contents)
+//        adapterStory1.notifyDataSetChanged()
+        MyApplication.getCleverTapDefaultInstance().pushDisplayUnitViewedEventForID(unit.unitID)
+    }
 }

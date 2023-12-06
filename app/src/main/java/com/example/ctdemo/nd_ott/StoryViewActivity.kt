@@ -36,7 +36,7 @@ class StoryViewActivity : AppCompatActivity(), MomentzCallback {
         for (image in images) {
             val imageView = ImageView(this)
 
-            listOfViews.add(MomentzView(imageView, 3))
+            listOfViews.add(MomentzView(imageView, 2))
         }
 
 
